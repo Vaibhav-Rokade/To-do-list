@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Work list</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<style type="text/css">
+		.box2
+		{
+			background: #fff;
+			font-weight: 600;
+			align-items: center;
+			text-align: center;
+			margin-top: 90px;
+		}
+
+		.box
+		{
+			margin-left: 550px;
+			margin-top: 20px;
+		}
+	</style>
+</head>
+<body>
+		<div class="container">
+			<div class="box">
+				<h2>work List</h2>
+				<input type="text" placeholder="Write Here..." id="inputBx">
+				<ul id="list"></ul>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			let inputBx = document.querySelector('#inputBx');
+			let list = document.querySelector('#list');
+
+			inputBx.addEventListener("keyup",function(event){
+				if(event.key == "Enter")
+				{
+					addItem(this.value)
+					this.value = ""
+				}
+			})
+
+			let addItem = (inputBx) => {
+				let listItem = document.createElement("li");
+				listItem.innerHTML = `${inputBx}<i></i>`;
+
+				listItem.addEventListener("click",function()
+				{
+					this.classList.toggle('done');
+				})
+
+				listItem.querySelector("i").addEventListener("click",function()
+				{
+					listItem.remove();
+				})
+
+				list.appendChild(listItem);
+			}
+		</script>
+<div class="box2">
+			<p>All &copy; Rights Riserved By Vaibhav /-</p>
+		</div>
+</body>
+</html>
